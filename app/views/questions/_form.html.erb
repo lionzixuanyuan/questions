@@ -1,0 +1,30 @@
+
+
+<%= form_for(@question, :html => {:id => "form1", :name => "form1", :onsubmit => "return checkform2()"}) do |f| %>
+  <div class="info_area">
+    <%= render "menu" %>
+    <h2>请输入提问人信息</h2>
+    <label>姓名:</label>
+    <%= f.text_field :name, :name => "name", :maxlength => "50", :id => "name" %>
+    <label>收信地址:</label>
+    <%= f.text_field :address, :name => "ename1", :maxlength => "50", :id => "ename1" %>
+    <label>大学:</label>
+    <%= f.text_field :college, :name => "ename1", :maxlength => "50", :id => "ename1" %>
+    <label>常用EMAIL:</label>
+    <%= f.text_field :e_mail, :name => "ename1", :maxlength => "50", :id => "ename1" %>
+    <label>手机号:</label>
+    <%= f.text_field :phone, :name => "emoblie1", :maxlength => "11", :id => "emoblie1" %>
+
+    <label>验证码:</label>
+    <input name="valid_num" maxlength="11" id="valid_num" />
+
+    <label>问题内容:</label>
+    <%= f.text_area :question, :cols => "30", :rows => "10", :placeholder => "请输入您的问题" %>
+  </div>
+  <div class="send_mail" onclick="$('#form1').submit()">提交</div>
+  <input type="hidden" value="moblie" id="page" name="page" />
+  <input type="hidden" value="auckland" id="a1" name="a1" />
+  <input type="hidden" value="abc" id="tabletitle" name="tabletitle" />
+  <input type="hidden" value="我想和你一起去auckland游学！期望EF英孚可以送我俩一起去！" id="tableshow" name="tableshow" />
+  <input type="hidden" value="def" id="tablefrom" name="tablefrom" />
+<% end %>

@@ -1,0 +1,90 @@
+<%= render 'form' %>
+
+<script>
+//判断2
+function checkform2()
+{
+    if($("#email1").val()==""){
+        alert('请填写发件人邮箱');
+        $("#email1").focus();
+        return false;
+    }else if(!checkemail($("#email1").val())){
+        alert('邮件地址有误,请重新填写');  
+        $("#email1").focus();
+        return false;
+    }
+    
+    if($("#ename1").val()==""){
+        alert('请填写发件人名称');
+        $("#ename1").focus();
+        return false;
+    }
+    
+    if($("#emoblie1").val()==""){
+        alert('请填写发件人手机号');
+        $("#emoblie1").focus();
+        return false;
+    }else if(!checkMobile($("#emoblie1").val())){
+        alert('手机号有误,请重新填写');
+        $("#emoblie1").focus();
+        return false;   
+    }
+    
+    if($("#email2").val()==""){
+        alert('请填写收件人邮箱');
+        $("#email2").focus();
+        return false;
+    }else if(!checkemail($("#email2").val())){
+        alert('邮件地址有误,请重新填写');  
+        $("#email2").focus();
+        return false;
+    }
+    
+    if($("#ename2").val()==""){
+        alert('请填写收件人名称');
+        $("#ename2").focus();
+        return false;
+    }
+    
+    if($("#emoblie2").val()==""){
+        alert('请填写收件人手机号');
+        $("#emoblie2").focus();
+        return false;
+    }else if(!checkMobile($("#emoblie2").val())){
+        alert('手机号有误,请重新填写');
+        $("#emoblie2").focus();
+        return false;   
+    }
+    
+    $("#toids").html($("#ename1").val());
+    $("#formids").html($("#ename2").val());
+    
+    $.ajax({
+        type: "POST",
+        url: "yii.php?r=site/postajax",
+        data: $("#form1").serialize(),
+        success: function(msg){
+            window.location.href='step3.php?a='+$("#ename1").val()+'&b='+$("#ename2").val()
+        }
+    });
+    
+    return false;
+} 
+
+function checkMobile(str){
+    if(!(/^1[3|5|8][0-9]\d{4,8}$/.test(str))){
+        return false;
+    }
+    return true;
+}
+
+function checkemail(email){            // 功能函数
+    var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    if(email!=""){
+        if(!myreg.test(email)){
+            return false;
+        }
+    }
+    return true;
+}
+</script>

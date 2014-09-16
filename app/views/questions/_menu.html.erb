@@ -1,0 +1,11 @@
+<ul class="nav-menus clearfix">
+  <li <% if @title == "首页" %> class="active" <% end %>>
+    <%= link_to '', city_index_questions_path, :class => "city" %>
+  </li>
+  <li <% if @title == "留言" %> class="active" <% end %>>
+    <%= link_to '', message_questions_path, :class => "message" %>
+  </li>
+  <li <% if @title == "介绍" %> class="active" <% end %>>
+    <%= link_to '', introduce_questions_path, :class => "intro" %>
+  </li>
+</ul>
