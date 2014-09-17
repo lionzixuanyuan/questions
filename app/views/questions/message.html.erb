@@ -5,9 +5,59 @@
     <a href="javascript:void(0)" class="arrow-left"></a>
     <a href="javascript:void(0)" class="arrow-right"></a>
 
-    <div class="world-map"></div>
+    <div class="world-map">
+      <a href="#" class="city-ef toronto"><span>(<%= @questions_count["Toronto"] || 0 %>)</span>Toronto</a>
+      <a href="#" class="city-ef los-angeles"><span>(<%= @questions_count["Los Angeles"] || 0 %>)</span>Los Angeles</a>
+      <a href="#" class="city-ef new-york"><span>(<%= @questions_count["New York"] || 0 %>)</span>New York</a>
+      <a href="#" class="city-ef london"><span>(<%= @questions_count["London"] || 0 %>)</span>London</a>
+      <a href="#" class="city-ef tokyo"><span>(<%= @questions_count["Tokyo"] || 0 %>)</span>Tokyo</a>
+      <a href="#" class="city-ef singapore"><span>(<%= @questions_count["Singapore"] || 0 %>)</span>Singapore</a>
+      <a href="#" class="city-ef sydney"><span>(<%= @questions_count["Sydney"] || 0 %>)</span>Sydney</a>
+      <a href="#" class="city-ef auckland"><span>(<%= @questions_count["Auckland"] || 0 %>)</span>Auckland</a>
+      <a href="#" class="city-aiesec egypt"><span>(<%= @questions_count["Egypt"] || 0 %>)</span>Egypt</a>
+      <a href="#" class="city-aiesec india"><span>(<%= @questions_count["India"] || 0 %>)</span>India</a>
+      <a href="#" class="city-aiesec indonesia"><span>(<%= @questions_count["Indonesia"] || 0 %>)</span>Indonesia</a>
+      <a href="#" class="city-aiesec mauritius"><span>(<%= @questions_count["Mauritius"] || 0 %>)</span>Mauritius</a>
+      <a href="#" class="city-aiesec russia"><span>(<%= @questions_count["Russia"] || 0 %>)</span>Russia</a>
+      <a href="#" class="city-aiesec tazania"><span>(<%= @questions_count["Tazania"] || 0 %>)</span>Tazania</a>
+    </div>
 
-    <div class="message-detail"></div>
+    <div class="message-detail hide">
+      <a href="" class="close-btn">×</a>
+      <div class="inner">
+        <h3>纽约</h3>
+        <dl>
+          <dt>Q:这是一个什么样的城市</dt>
+          <dd>
+            <ul>
+              <li>好想好想去这里游学啊。</li>
+              <li>此处省略无数字，送我一张机票我会在机场等着你。
+              <li>美丽的大都市，热情的好客的人们，我太喜欢这个城市啦！</li>
+              <li>那个那个谁，你举着火炬累不累，要不要我帮你一把！</li>
+            </ul>
+            <div class="buttons">
+              <a href="" class="vote">赞</a>
+              <a href="" class="expand">查看全部(<span>999</span>)</a>
+              <a href="" class="reply">回复</a>
+            </div>
+          </dd>
+
+          <dt>Q:这是一个什么样的城市</dt>
+          <dd>
+            <ul>
+              <li>好想好想去这里游学啊。</li>
+              <li>此处省略无数字，送我一张机票我会在机场等着你。
+              <li>美丽的大都市，热情的好客的人们，我太喜欢这个城市啦！</li>
+              <li>那个那个谁，你举着火炬累不累，要不要我帮你一把！</li>
+            </ul>
+            <div class="buttons">
+              <a href="" class="vote">赞</a>
+              <a href="" class="expand">查看全部(<span>999</span>)</a>
+              <a href="" class="reply">回复</a>
+            </div>
+          </dd>
+        </dl>
+      </div>
+    </div>
   </div>
-
 </body>

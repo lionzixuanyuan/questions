@@ -47,7 +47,7 @@ a{color:white;text-decoration:underline}
 	color:white;
 }
 .detail_mid{
-	background:url(../img/mobile_bg.png);	
+	background:url("<%= asset_path 'assets/mobile_bg.png' %>");	
 	width:228px;
 	height:469px;
 	padding:20px;
@@ -59,7 +59,7 @@ a{color:white;text-decoration:underline}
 	border:2px solid #df007f;	
 }
 .mb_pop_box{
-	background:url(../img/mobile_bg.png);	
+	background:url("<%= asset_path 'assets/mobile_bg.png' %>");	
 	width:228px;
 	height:469px;
 	padding:20px;
@@ -84,7 +84,7 @@ a{color:white;text-decoration:underline}
 	margin-top:20px;	
 }
 #step2_info p{
-	background:url(../img/input_bg.jpg) repeat-x;
+	background:url("<%= asset_path 'assets/input_bg.jpg' %>") repeat-x;
 	height:30px;
 	font-size:18px;
 	color:#001e30;
@@ -95,7 +95,7 @@ a{color:white;text-decoration:underline}
 	float:left;
 }
 #step2_info input{
-	background:url(../img/input_bg.jpg) repeat-x;
+	background:url("<%= asset_path 'assets/input_bg.jpg' %>") repeat-x;
 	width:130px;
 	height:28px;
 	margin-left:2px;
@@ -109,7 +109,7 @@ a{color:white;text-decoration:underline}
 	float:left;
 }
 #step2_info textarea{
-	background:url(../img/textarea_bg.jpg) repeat;
+	background:url("<%= asset_path 'assets/textarea_bg.jpg' %>") repeat;
 	width:222px;
 	height:238px;
 	font-size:18px;
@@ -124,7 +124,7 @@ a{color:white;text-decoration:underline}
 }
 .step_change{
 	float:left;
-	background:url(../img/choose_bg.png);
+	background:url("<%= asset_path 'assets/choose_bg.png' %>");
 	width:76px;
 	height:38px;
 	text-align:center;
@@ -137,6 +137,9 @@ a{color:white;text-decoration:underline}
 	margin:20px auto 5px;
 	width:288px;
 	color:white;
+}
+.info_area .nav-menus{
+	margin:-20px -16px -5px;
 }
 .info_area h2{
 	font-size:0.8em;
@@ -167,7 +170,7 @@ a{color:white;text-decoration:underline}
 	font-size:0.8em;
 }
 .send_mail{
-	background:url(../img/choose_bg.png);
+	background:url("<%= asset_path 'assets/choose_bg.png' %>");
 	width:76px;
 	height:38px;
 	text-align:center;
@@ -177,7 +180,7 @@ a{color:white;text-decoration:underline}
 	cursor:pointer;
 }
 .step3_box{
-	background:url(../img/mobile_bg.png);	
+	background:url("<%= asset_path 'assets/mobile_bg.png' %>");	
 	width:228px;
 	height:469px;
 	padding:20px;
@@ -187,7 +190,7 @@ a{color:white;text-decoration:underline}
 	z-index:3;
 }
 .step3_box p{
-	background:url(../img/textarea_bg.jpg) repeat;
+	background:url("<%= asset_path 'assets/textarea_bg.jpg' %>") repeat;
 	line-height:40px;
 	font-style:italic;
 	width:210px;
@@ -196,7 +199,7 @@ a{color:white;text-decoration:underline}
 	color:#e844a1;	
 }
 .step_finish{
-	background:url(../img/choose_bg.png);
+	background:url("<%= asset_path 'assets/choose_bg.png' %>");
 	width:76px;
 	height:38px;
 	text-align:center;

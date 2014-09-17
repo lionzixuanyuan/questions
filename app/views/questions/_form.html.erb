@@ -1,30 +1,28 @@
 
 
-<%= form_for(@question, :html => {:id => "form1", :name => "form1", :onsubmit => "return checkform2()"}) do |f| %>
-  <div class="info_area">
-    <%= render "menu" %>
+<%= form_for(@question, :html => {:id => "form1", :name => "form1"}) do |f| %>
+  <div class="info_area question">
+    <%= render "menu" %><br>
     <h2>请输入提问人信息</h2>
     <label>姓名:</label>
-    <%= f.text_field :name, :name => "name", :maxlength => "50", :id => "name" %>
+    <%= f.text_field :name, :id => "name", :maxlength => "20" %>
     <label>收信地址:</label>
-    <%= f.text_field :address, :name => "ename1", :maxlength => "50", :id => "ename1" %>
+    <%= f.text_field :address, :id => "address", :maxlength => "50" %>
     <label>大学:</label>
-    <%= f.text_field :college, :name => "ename1", :maxlength => "50", :id => "ename1" %>
+    <%= f.text_field :college, :id => "university", :maxlength => "50" %>
     <label>常用EMAIL:</label>
-    <%= f.text_field :e_mail, :name => "ename1", :maxlength => "50", :id => "ename1" %>
+    <%= f.text_field :e_mail, :id => "email", :maxlength => "50" %>
     <label>手机号:</label>
-    <%= f.text_field :phone, :name => "emoblie1", :maxlength => "11", :id => "emoblie1" %>
+    <%= f.text_field :phone, :id => "mobile", :class => "mobile", :maxlength => "11" %>
+    <input type="button" value="发送验证码" id="send-vcode" class="vcode-btn">
 
     <label>验证码:</label>
-    <input name="valid_num" maxlength="11" id="valid_num" />
+    <input type="text" name="valid_num" id="vcode" maxlength="8" />
 
     <label>问题内容:</label>
-    <%= f.text_area :question, :cols => "30", :rows => "10", :placeholder => "请输入您的问题" %>
+    <%= f.text_area :question, :id => "question", :cols => "30", :rows => "10", :placeholder => "请输入您的问题" %>
+
+    <%= f.hidden_field :city %>
   </div>
   <div class="send_mail" onclick="$('#form1').submit()">提交</div>
-  <input type="hidden" value="moblie" id="page" name="page" />
-  <input type="hidden" value="auckland" id="a1" name="a1" />
-  <input type="hidden" value="abc" id="tabletitle" name="tabletitle" />
-  <input type="hidden" value="我想和你一起去auckland游学！期望EF英孚可以送我俩一起去！" id="tableshow" name="tableshow" />
-  <input type="hidden" value="def" id="tablefrom" name="tablefrom" />
 <% end %>

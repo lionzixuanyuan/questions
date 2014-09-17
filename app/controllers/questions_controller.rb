@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  require "service/message"
 
   # 首页
   def city_index
@@ -8,12 +9,34 @@ class QuestionsController < ApplicationController
 
   # 留言
   def message
+    @questions_count = Question.all.group(:city).count
     @title = "留言"
   end
 
   # 介绍
   def introduce
     @title = "介绍"
+  end
+
+  # 发送验证短信
+  def send_valid_sms
+    if params[:phone].present? && Service::Message.send_code_by_phone(params[:phone])
+      result = {:state => "success"}
+    else
+      result = {:state => "error"}
+    end
+    render :json => result.to_json
+  end
+
+  # 校验验证短信
+  def examine_valid_num
+    if Service::Message.valid_phone_code(params[:phone], params[:valid_num])
+      result = {:state => "success"}
+    else
+      result = {:state => "error"}
+    end
+    
+    render :json => result.to_json
   end
 
   # GET /questions
@@ -29,7 +52,9 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    @title = "首页"
     @question = Question.new
+    @question.city = params[:city]
     render :layout => "form"
   end
 
@@ -85,6 +110,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:name, :address, :college, :e_mail, :phone, :question)
+      params.require(:question).permit(:name, :address, :college, :e_mail, :phone, :question, :city)
     end
 end

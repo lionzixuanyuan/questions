@@ -4,6 +4,9 @@ Questions::Application.routes.draw do
       get 'city_index'
       get 'message'
       get 'introduce'
+
+      post 'send_valid_sms'
+      post 'examine_valid_num'
     end
   end
 

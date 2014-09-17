@@ -390,6 +390,7 @@ h2 {
   z-index: 5002;
 }
 .map .world-map {
+  position: relative;
   width: 921px;
   height: 569px;
   background-image: url("<%= asset_path 'assets/maps.png' %>");
@@ -402,6 +403,188 @@ h2 {
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-.message-detail img {
+.map .world-map a {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 25px auto;
+  height: 36px;
+  color: #cc8d05;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #dedede;
+}
+.map .world-map a span {
+  color: #ebba00;
+  font-size: 9px;
+  display: block;
+  font-weight: normal;
+  padding: 0px 0px 0px 9px;
+  -webkit-animation-name: fadeInOut;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 3s;
+}
+.map .world-map .city-ef {
+  background-image: url("<%= asset_path 'assets/city-dot1.png' %>");
+}
+.map .world-map .city-aiesec {
+  background-image: url("<%= asset_path 'assets/city-dot2.png' %>");
+  color: #003399;
+}
+.map .world-map .city-aiesec span {
+  color: #042574;
+}
+.map .world-map .toronto {
+  left: 126px;
+  top: 113px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .los-angeles {
+  left: 79px;
+  top: 215px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .new-york {
+  left: 206px;
+  top: 212px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .london {
+  left: 403px;
+  top: 177px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .tokyo {
+  left: 783px;
+  top: 211px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .singapore {
+  left: 632px;
+  top: 346px;
+  padding: 10px 23px 0px 0px;
+  background-position: right top;
+}
+.map .world-map .sydney {
+  left: 777px;
+  top: 446px;
+  padding: 10px 23px 0px 0px;
+  background-position: right top;
+}
+.map .world-map .auckland {
+  left: 827px;
+  top: 478px;
+  padding: 10px 23px 0px 0px;
+  background-position: right top;
+}
+.map .world-map .egypt {
+  left: 446px;
+  top: 260px;
+  padding: 10px 26px 0px 0px;
+  background-position: right top;
+}
+.map .world-map .india {
+  left: 610px;
+  top: 267px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .indonesia {
+  left: 716px;
+  top: 363px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .mauritius {
+  left: 567px;
+  top: 398px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .russia {
+  left: 525px;
+  top: 137px;
+  padding: 10px 0px 0px 26px;
+}
+.map .world-map .tazania {
+  left: 456px;
+  top: 355px;
+  padding: 10px 26px 0px 0px;
+  background-position: right top;
+}
+@-webkit-keyframes fadeInOut {
+  0% {
+    -webkit-transform: translate(0px);
+  }
+  25% {
+    -webkit-transform: translate(6px);
+  }
+  50% {
+    -webkit-transform: translate(6px);
+  }
+  75% {
+    -webkit-transform: translate(0px);
+  }
+}
+.message-detail {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 8000;
+  background-color: #e4007f;
   width: 100%;
 }
+.message-detail .close-btn {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  font-size: 26px;
+}
+.message-detail .inner {
+  margin: 20px 20px;
+  min-height: 610px;
+  background-color: #fff;
+  border-radius: 20px;
+  background-image: url("<%= asset_path 'assets/question-bg.png' %>");
+  background-repeat: no-repeat;
+  background-position: center 22px;
+  background-size: 296px auto;
+}
+.message-detail .inner h3 {
+  color: #e4007f;
+  font-size: 24px;
+  padding: 39px 0px 56px 100px;
+}
+.message-detail .inner dt {
+  font-weight: bold;
+  font-size: 15px;
+  padding: 27px 13px 9px;
+}
+.message-detail .inner dd {
+  font-size: 13px;
+  padding: 0px 15px 22px 32px;
+  background-image: url("<%= asset_path 'assets/question-separator.png' %>");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 179px auto;
+}
+.message-detail .inner ul {
+  list-style: decimal inside;
+  line-height: 150%;
+}
+.message-detail .inner .buttons {
+  padding: 10px 2px 0px 0px;
+  text-align: right;
+}
+.message-detail .inner .buttons a {
+  margin: 0px 4px;
+}
+.message-detail .inner .buttons a span {
+  color: #e4007f;
+}
+.question .mobile {
+  width: 172px;
+}
+.question .vcode-btn {
+  width: 104px;
+  cursor: pointer;
+  height: 26px;
+}
+
