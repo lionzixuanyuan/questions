@@ -111,8 +111,6 @@ function main(){
       }
     });
 
-    // alert("验证码[123456]已发送！");
-
     sendVcodeBtn.attr("disabled", true);
 
     cdTimer = setTimeout(cd,1000);

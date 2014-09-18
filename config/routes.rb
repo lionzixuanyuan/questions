@@ -7,6 +7,7 @@ Questions::Application.routes.draw do
 
       post 'send_valid_sms'
       post 'examine_valid_num'
+      post 'city_messages'
     end
   end
 

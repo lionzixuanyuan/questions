@@ -18,6 +18,17 @@ class QuestionsController < ApplicationController
     @title = "介绍"
   end
 
+  # 获取城市问题列表
+  def city_messages
+    questions = Question.where(:city => params[:city]).collect{|q| q.answer_list}
+
+    result = {
+      title: params[:city],
+      q_html: questions.join
+    }
+    render :json => result.to_json
+  end
+
   # 发送验证短信
   def send_valid_sms
     if params[:phone].present? && Service::Message.send_code_by_phone(params[:phone])

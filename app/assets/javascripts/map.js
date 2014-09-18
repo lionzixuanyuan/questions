@@ -42,20 +42,35 @@
     messageDetail.addClass("hide");
   });
 
+  // 点击展示城市问题
   citys.each(function(index){
     var city = $(this);
 
     city.on('click', function(e){
       e.preventDefault();
-      
-      showQuestions({
-        title: city.text().replace(/\(\d*\)/,"")
+
+      $.ajax({
+        type: "POST",
+        url: "/questions/city_messages",
+        data: {
+          city: city.text().replace(/\(\d*\)/,""),
+          authenticity_token: authToken()
+        },
+        success: function(data){
+          console.log(data);
+          showQuestions(data);
+        }
       });
+      
     });
   });
 
   function showQuestions(opt){
     messageDetail.removeClass("hide");
     messageTitle.text(opt.title);
+    messageList.empty();
+    messageList.prepend(opt.q_html);
+
+
   }
 })(Zepto);
