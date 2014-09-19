@@ -6,6 +6,6 @@
     <%= link_to '', message_questions_path, :class => "message" %>
   </li>
   <li <% if @title == "介绍" %> class="active" <% end %>>
-    <%= link_to '', introduce_questions_path, :class => "intro" %>
+    <%= link_to '', "#{introduce_questions_path}#start", :class => "intro" %>
   </li>
 </ul>
