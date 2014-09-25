@@ -5,7 +5,7 @@ module Service
     def self.send_code_by_phone(phone)
       code = rand_num_code(6)
       Rails.logger.info("Verify Code: phone =>  #{phone} ; code => #{code}")
-      content = "欢迎使用股神汇，验证码是:#{code}"
+      content = "您的验证码是:#{code}。【AISEC / EF海外游学】"
       if Rails.cache.write([:verify_code, phone], code, :expires_in => 15.minutes)
         send_code_channel(content, phone)
       else
@@ -30,46 +30,59 @@ module Service
     end
 
     def self.send_code_channel(content, phone)
-      # response = Unirest.post "http://124.172.250.160/WebService.asmx/mt",
-      #   headers:{ "Accept" => "application/x-www-form/urlencoded" }, 
-      #   parameters:{
-      #     Sn: "SDK-ZQ-CZWL-0736",
-      #     Pwd: "Candzen_#10",
-      #     mobile: phone,
-      #     content: content
-      #   }
+      # http://114.215.202.188:8081/
+      # http://124.173.70.59:8081/
+      response = Unirest.post "http://114.215.202.188:8081/SmsAndMms/mt",
+        headers:{ "Accept" => "application/x-www-form/urlencoded" }, 
+        parameters:{
+          Sn: "SDK-YFU-0149",
+          Pwd: "M234F",
+          mobile: phone,
+          content: content
+        }
 
-      # return_code = Hash.from_xml(response.raw_body)
+      return_code = response.headers[:location].match(/\/(-)*\d+.xml/).to_s.match(/(-)*\d+/).to_s
 
-      # case return_code["int"]
-      # when "0"
-      #   true
-      # when "-1"
-      #   # 用户名或密码错误
-      #   Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：用户名或密码错误")
-      #   false
-      # when "-2"
-      #   # 发送短信余额不足
-      #   Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：发送短信余额不足")
-      #   false
-      # when "-6"
-      #   # 参数有误
-      #   Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：参数有误")
-      #   false
-      # when "-7"
-      #   # 权限受限
-      #   Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：权限受限")
-      #   false
-      # when "-8"
-      #   # Ip失败
-      #   Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：Ip失败")
-      #   false
-      # when "-11"
-      #   # 内部数据库错误
-      #   Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：内部数据库错误")
-      #   false
-      # end
-      true
+      puts '>>>>>>>>'
+      puts '>>>>>>>>'
+      p return_code
+      puts '>>>>>>>>'
+      puts '>>>>>>>>'
+
+      case return_code["int"]
+      when "0"
+        true
+      when "-1"
+        # 用户名或密码错误
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：用户名或密码错误")
+        false
+      when "-2"
+        # 发送短信余额不足
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：发送短信余额不足")
+        false
+      when "-6"
+        # 参数有误
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：参数有误")
+        false
+      when "-7"
+        # 权限受限
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：权限受限")
+        false
+      when "-8"
+        # Ip失败
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：Ip失败")
+        false
+      when "-11"
+        # 内部数据库错误
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：内部数据库错误")
+        false
+      end
+      # true
     end
   end
 end
+
+
+
+# HYPERLINK "http://114.215.202.188:8081/SmsAndMms/mt?Sn=xxx&Pwd=xxx&mobile=13010203040&content=123"
+#            http://124.173.70.59:8081/SmsAndMms/mt?Sn=xxx&Pwd=xxx&mobile=13010203040&content=123

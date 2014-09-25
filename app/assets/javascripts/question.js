@@ -1,14 +1,8 @@
 //判断2
 $("#form1").on("submit", function (){
 
-  if($.trim($("#name").val())==""){
-    alert('请填写提问人姓名');
-    $("#name").focus();
-    return false;
-  }
-
   if($.trim($("#address").val())==""){
-    alert('请填写提问人收信地址');
+    alert('请填写城市');
     $("#address").focus();
     return false;
   }
@@ -16,6 +10,12 @@ $("#form1").on("submit", function (){
   if($.trim($("#university").val())==""){
     alert('请填写大学');
     $("#university").focus();
+    return false;
+  }
+
+  if($.trim($("#name").val())==""){
+    alert('请填写提问人姓名');
+    $("#name").focus();
     return false;
   }
 
@@ -71,18 +71,20 @@ $("#form1").on("submit", function (){
     return false;
   };
 
-  if($.trim($("#question").val())==""){
-    alert('请填写提问内容');
-    $("#question").focus();
-    return false;
-  }
+  // if($.trim($("#question").val())==""){
+  //   alert('请填写提问内容');
+  //   $("#question").focus();
+  //   return false;
+  // }
   
 });
 
 function main(){
   var sendVcodeBtn = $('#send-vcode'),
     cdTime = 60,
-    cdTimer;
+    cdTimer,
+    formBand = $(".form-band");
+
 
   sendVcodeBtn.on('click', function(){
     if($("#mobile").val()==""){
@@ -104,29 +106,47 @@ function main(){
       },
       success: function(data){
         if (data.state == "success") {
-          alert("验证码发送成功！");
+          // alert("验证码发送成功！");
+          sendVcodeBtn.attr("disabled", true);
+          cdTimer = setTimeout(cd,1000);
         } else{
-          alert("验证码发送失败，请稍后再试！");
+          if (data.msg != null) {
+            alert(data.msg);
+          } else{
+            alert("验证码发送失败，请稍后再试！");
+          };
+          return false;
         };
       }
     });
 
-    sendVcodeBtn.attr("disabled", true);
-
-    cdTimer = setTimeout(cd,1000);
+    return false;
   });
 
   function cd(){
     if(cdTime > 0){
       cdTime --;
       cdTimer = setTimeout(cd, 1000);
-      sendVcodeBtn.val(cdTime+'秒后重发');
+      sendVcodeBtn.text(cdTime+'秒后重发');
     }else{
       clearTimeout(cdTimer);
       cdTime = 60;
-      sendVcodeBtn.val("发送验证码").removeAttr("disabled");
+      sendVcodeBtn.text("发送验证码").removeAttr("disabled");
     }
   }
+
+  //判断1
+  $('#go-next-step').on('click', function(){
+    if($("#tableshow").val()==""){
+      alert('请填写您的问题');
+      $("#tableshow").focus();
+      return false;
+    }
+    $("body").addClass("question_bg");
+    formBand.eq(0).addClass("hide");
+    formBand.eq(1).removeClass("hide");
+    return true;
+  });
 }
 main();
 

@@ -3,6 +3,22 @@
     <%= render "menu" %>
 
     <h2 class="band-title1"></h2>
+    <div class="relative band2 city-container">
+      <a href="javascript:void(0)" class="arrow-left"></a>
+      <a href="javascript:void(0)" class="arrow-right"></a>
+      <div class="city-list-container">
+        <ul class="city-list">
+          <li><a href="<%= new_question_path(:city => "Egypt") %>"><img src="<%= asset_path('assets/citys-aiesic/egypt.jpg') %>" alt=""></a></li>
+          <li><a href="<%= new_question_path(:city => "India") %>"><img src="<%= asset_path('assets/citys-aiesic/india.jpg') %>" alt=""></a></li>
+          <li><a href="<%= new_question_path(:city => "Indonesia") %>"><img src="<%= asset_path('assets/citys-aiesic/indonesia.jpg') %>" alt=""></a></li>
+          <li><a href="<%= new_question_path(:city => "Mauritius") %>"><img src="<%= asset_path('assets/citys-aiesic/mauritius.jpg') %>" alt=""></a></li>
+          <li><a href="<%= new_question_path(:city => "Russia") %>"><img src="<%= asset_path('assets/citys-aiesic/russia.jpg') %>" alt=""></a></li>
+          <li><a href="<%= new_question_path(:city => "Tazania") %>"><img src="<%= asset_path('assets/citys-aiesic/tazania.jpg') %>" alt=""></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="band-title2"></h2>
     <div class="relative city-container">
       <a href="javascript:void(0)" class="arrow-left"></a>
       <a href="javascript:void(0)" class="arrow-right"></a>
@@ -16,22 +32,6 @@
           <li><a href="<%= new_question_path(:city => "Sydney") %>"><img src="<%= asset_path('assets/citys-ef/sydney.jpg') %>" alt=""></a></li>
           <li><a href="<%= new_question_path(:city => "Tokyo") %>"><img src="<%= asset_path('assets/citys-ef/tokyo.jpg') %>" alt=""></a></li>
           <li><a href="<%= new_question_path(:city => "Toronto") %>"><img src="<%= asset_path('assets/citys-ef/toronto.jpg') %>" alt=""></a></li>
-        </ul>
-      </div>
-    </div>
-
-    <h2 class="band-title2"></h2>
-    <div class="relative band2 city-container">
-      <a href="javascript:void(0)" class="arrow-left"></a>
-      <a href="javascript:void(0)" class="arrow-right"></a>
-      <div class="city-list-container">
-        <ul class="city-list">
-          <li><a href="<%= new_question_path(:city => "Egypt") %>"><img src="<%= asset_path('assets/citys-aiesic/egypt.jpg') %>" alt=""></a></li>
-          <li><a href="<%= new_question_path(:city => "India") %>"><img src="<%= asset_path('assets/citys-aiesic/india.jpg') %>" alt=""></a></li>
-          <li><a href="<%= new_question_path(:city => "Indonesia") %>"><img src="<%= asset_path('assets/citys-aiesic/indonesia.jpg') %>" alt=""></a></li>
-          <li><a href="<%= new_question_path(:city => "Mauritius") %>"><img src="<%= asset_path('assets/citys-aiesic/mauritius.jpg') %>" alt=""></a></li>
-          <li><a href="<%= new_question_path(:city => "Russia") %>"><img src="<%= asset_path('assets/citys-aiesic/russia.jpg') %>" alt=""></a></li>
-          <li><a href="<%= new_question_path(:city => "Tazania") %>"><img src="<%= asset_path('assets/citys-aiesic/tazania.jpg') %>" alt=""></a></li>
         </ul>
       </div>
     </div>

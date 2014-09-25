@@ -1,4 +1,6 @@
 Questions::Application.routes.draw do
+  resources :answers
+
   resources :questions do
     collection do
       get 'city_index'
@@ -8,6 +10,9 @@ Questions::Application.routes.draw do
       post 'send_valid_sms'
       post 'examine_valid_num'
       post 'city_messages'
+      post 'click_awesome'
+      post 'answer_question'
+      get 'export_excel'
     end
   end
 

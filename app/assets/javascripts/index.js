@@ -25,6 +25,7 @@
         });
 
         rightBtn.on('click', function(){
+
             pos -- ;
             if(pos < (citysCount-1)*-1){
                 pos = (citysCount-1)*-1;

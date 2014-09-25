@@ -299,6 +299,11 @@ h2 {
 .nav-menus .active .intro {
   background-position: -172px -2px;
 }
+.nav-menus-map {
+  width: 320px;
+  margin: 0px auto;
+  padding: 6px 0px 10px 0px;
+}
 .index {
   width: 320px;
   margin: 0px auto 109px;
@@ -363,7 +368,7 @@ h2 {
   width: 100%;
 }
 .map {
-  width: 320px;
+  width: 480px;
   margin: 0px auto;
   overflow: hidden;
 }
@@ -376,6 +381,7 @@ h2 {
   background-image: url("<%= asset_path 'assets/map-arrow.png' %>");
   background-repeat: no-repeat;
   background-size: 300px auto;
+  display: none;
 }
 .map .arrow-left {
   position: absolute;
@@ -391,34 +397,39 @@ h2 {
 }
 .map .world-map {
   position: relative;
-  width: 921px;
-  height: 569px;
+  width: 480px;
+  height: 320px;
   background-image: url("<%= asset_path 'assets/maps.png' %>");
   background-position: left top;
   background-repeat: no-repeat;
-  background-size: 921px auto;
+  background-size: 480px auto;
   z-index: 100;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  /* -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out; */
+  /* transform:rotate(90deg);
+        -ms-transform:rotate(90deg);     IE 9
+        -moz-transform:rotate(90deg);    Firefox
+        -webkit-transform:rotate(90deg); Safari 和 Chrome
+        -o-transform:rotate(90deg);  Opera */
 }
 .map .world-map a {
   position: absolute;
   background-repeat: no-repeat;
-  background-size: 25px auto;
+  background-size: 16px auto;
   height: 36px;
   color: #cc8d05;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: bold;
   text-shadow: 1px 1px 0px #dedede;
 }
 .map .world-map a span {
   color: #ebba00;
-  font-size: 9px;
+  font-size: 8px;
   display: block;
   font-weight: normal;
-  padding: 0px 0px 0px 9px;
+  padding: 0px 0px 0px 4px;
   -webkit-animation-name: fadeInOut;
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-iteration-count: infinite;
@@ -435,78 +446,78 @@ h2 {
   color: #042574;
 }
 .map .world-map .toronto {
-  left: 126px;
-  top: 113px;
-  padding: 10px 0px 0px 26px;
+  left: 64px;
+  top: 56px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .los-angeles {
-  left: 79px;
-  top: 215px;
-  padding: 10px 0px 0px 26px;
+  left: 40px;
+  top: 108px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .new-york {
-  left: 206px;
-  top: 212px;
-  padding: 10px 0px 0px 26px;
+  left: 106px;
+  top: 107px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .london {
-  left: 403px;
-  top: 177px;
-  padding: 10px 0px 0px 26px;
+  left: 209px;
+  top: 89px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .tokyo {
-  left: 783px;
-  top: 211px;
-  padding: 10px 0px 0px 26px;
+  left: 407px;
+  top: 105px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .singapore {
-  left: 632px;
-  top: 346px;
-  padding: 10px 23px 0px 0px;
+  left: 315px;
+  top: 177px;
+  padding: 2px 13px 0px 0px;
   background-position: right top;
 }
 .map .world-map .sydney {
-  left: 777px;
-  top: 446px;
-  padding: 10px 23px 0px 0px;
+  left: 398px;
+  top: 229px;
+  padding: 2px 13px 0px 0px;
   background-position: right top;
 }
 .map .world-map .auckland {
-  left: 827px;
-  top: 478px;
-  padding: 10px 23px 0px 0px;
+  left: 421px;
+  top: 246px;
+  padding: 2px 13px 0px 0px;
   background-position: right top;
 }
 .map .world-map .egypt {
-  left: 446px;
-  top: 260px;
-  padding: 10px 26px 0px 0px;
+  left: 224px;
+  top: 133px;
+  padding: 2px 16px 0px 0px;
   background-position: right top;
 }
 .map .world-map .india {
-  left: 610px;
-  top: 267px;
-  padding: 10px 0px 0px 26px;
+  left: 316px;
+  top: 136px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .indonesia {
-  left: 716px;
-  top: 363px;
-  padding: 10px 0px 0px 26px;
+  left: 371px;
+  top: 186px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .mauritius {
-  left: 567px;
-  top: 398px;
-  padding: 10px 0px 0px 26px;
+  left: 295px;
+  top: 204px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .russia {
-  left: 525px;
-  top: 137px;
-  padding: 10px 0px 0px 26px;
+  left: 273px;
+  top: 68px;
+  padding: 2px 0px 0px 16px;
 }
 .map .world-map .tazania {
-  left: 456px;
-  top: 355px;
-  padding: 10px 26px 0px 0px;
+  left: 229px;
+  top: 182px;
+  padding: 2px 16px 0px 0px;
   background-position: right top;
 }
 @-webkit-keyframes fadeInOut {
@@ -524,10 +535,10 @@ h2 {
   }
 }
 .message-detail {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 8000;
+  /* position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 8000; */
   background-color: #e4007f;
   width: 100%;
 }
@@ -544,47 +555,240 @@ h2 {
   border-radius: 20px;
   background-image: url("<%= asset_path 'assets/question-bg.png' %>");
   background-repeat: no-repeat;
-  background-position: center 22px;
-  background-size: 296px auto;
+  background-position: center 160px;
+  background-size: 90% auto;
 }
 .message-detail .inner h3 {
   color: #e4007f;
   font-size: 24px;
-  padding: 39px 0px 56px 100px;
+  padding: 58px 0px 43px 133px;
+  background-image: url("<%= asset_path 'assets/message-detail-title.jpg' %>");
+  background-repeat: no-repeat;
+  background-position: 37px 13px;
+  background-size: 100px auto;
+}
+.message-detail .inner dl {
+  padding-bottom: 30px;
 }
 .message-detail .inner dt {
   font-weight: bold;
   font-size: 15px;
-  padding: 27px 13px 9px;
+  padding: 2px 13px 9px;
+  cursor: pointer;
+}
+.message-detail .inner dt .arrow {
+  border-right: #666 2px solid;
+  border-top: #666 2px solid;
+  margin-right: 2px;
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  -webkit-transform: rotate(45deg) translate(-2px);
+}
+.message-detail .inner dt .q-title {
+  display: inline-block;
+  width: 26em;
+  overflow: hidden;
+  /*text-overflow:ellipsis;*/
+  white-space: nowrap;
+}
+.message-detail .inner dt.open .arrow {
+  -webkit-transform: rotate(135deg) translateY(2px);
+}
+.message-detail .inner dt.open .q-title {
+  width: auto;
+  white-space: normal;
+}
+.message-detail .inner dt.open .buttons {
+  display: block;
 }
 .message-detail .inner dd {
   font-size: 13px;
   padding: 0px 15px 22px 32px;
-  background-image: url("<%= asset_path 'assets/question-separator.png' %>");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: 179px auto;
+  margin-bottom: 16px;
+  /* background-image: url("<%= asset_path 'assets/question-separator.png' %>");
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-size: 179px auto; */
+  border-bottom: #888 1px dashed;
 }
 .message-detail .inner ul {
   list-style: decimal inside;
   line-height: 150%;
 }
 .message-detail .inner .buttons {
-  padding: 10px 2px 0px 0px;
+  padding: 0px 2px 0px 0px;
   text-align: right;
+  font-size: 12px;
+  display: block;
 }
 .message-detail .inner .buttons a {
-  margin: 0px 4px;
+  margin: 0px 2px;
+  background-image: url("<%= asset_path 'assets/icons.png' %>");
+  background-repeat: no-repeat;
+  background-size: auto 19px;
+  padding: 0px 0px 0px 19px;
 }
 .message-detail .inner .buttons a span {
   color: #e4007f;
 }
-.question .mobile {
-  width: 172px;
+.message-detail .inner .buttons a.reply {
+  background-position: -152px 0px;
+}
+.message-detail .inner .buttons a.disabled {
+  background-image: url("<%= asset_path 'assets/icons-gray.png' %>");
+  color: #666;
+}
+.message-detail .inner .buttons a.disabled span {
+  color: #666;
+}
+.message-detail .inner .reply-form {
+  padding: 5px;
+  text-align: right;
+}
+.message-detail .inner .reply-form textarea {
+  width: 100%;
+  height: 56px;
+  font-size: 14px;
+  line-height: 150%;
+  color: #333;
+}
+.message-detail .inner .reply-form button {
+  background-image: url("<%= asset_path 'assets/choose_bg.png' %>");
+  background-size: 100% 100%;
+  width: 56px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+  cursor: pointer;
+  border: 0 none;
+  border-radius: 2px;
+  margin-top: 4px;
+}
+@media screen and (orientation: portrait) {
+  .map-bg {
+    -webkit-transform: rotateZ(90deg);
+  }
+  .message-detail {
+    /*float: left;*/
+    min-width: 480px;
+    /* .inner{
+            dt{
+                .q-title{
+                    width: 50%;
+                }  
+            }
+        } */
+  }
+}
+.question_bg {
+  background-image: url("<%= asset_path 'assets/post-bg.png' %>");
+  background-repeat: no-repeat;
+  background-position: center 10px;
+  background-size: 300px auto;
+  background-color: #fff;
+}
+.question {
+  width: 288px;
+  margin: 16px auto;
+  font-size: 16px;
+  min-height: 536px;
 }
 .question .vcode-btn {
-  width: 104px;
+  width: 80px;
   cursor: pointer;
   height: 26px;
+  font-size: 12px;
+  border-radius: 2px;
+  border: #666 1px solid;
 }
-
+.question label {
+  font-style: italic;
+}
+.question input {
+  width: 120px;
+  border: 0 none;
+  background: transparent;
+  border-bottom: #666 1px dashed;
+  text-indent: 0.5em;
+  font-size: 14px;
+  border-radius: 0px;
+}
+.question .send_mail {
+  background: url("<%= asset_path 'assets/choose_bg.png' %>");
+  width: 76px;
+  height: 38px;
+  text-align: center;
+  line-height: 38px;
+  margin: 26px auto;
+  color: white;
+  cursor: pointer;
+}
+.question .p-city {
+  padding: 30px 0px 0px 16px;
+}
+.question .p-university {
+  padding: 16px 0px 0px 49px;
+}
+.question .p-user {
+  padding: 69px 0px 0px 16px;
+}
+.question .p-contact {
+  text-align: right;
+}
+.question .p-contact input {
+  width: 160px;
+}
+.question .p-contact input.input-short {
+  width: 80px;
+}
+.question .p-email {
+  padding: 60px 16px 0px 0px;
+}
+.question .p-cellphone {
+  padding: 16px 16px 0px 0px;
+}
+.question .p-vcode {
+  padding: 16px 16px 0px 0px;
+}
+.photo-icons {
+  background-image: url("<%= asset_path 'assets/photo-icons.png' %>");
+  background-repeat: no-repeat;
+  background-size: auto 50px;
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  vertical-align: text-top;
+  margin-right: 4px;
+}
+.photo1 {
+  background-position: 0px 0px;
+}
+.photo2 {
+  background-position: -25px 0px;
+}
+.photo3 {
+  background-position: -50px 0px;
+}
+.photo4 {
+  background-position: -78px 0px;
+}
+.photo5 {
+  background-position: -104px 0px;
+}
+.photo6 {
+  background-position: 0px -29px;
+}
+.photo7 {
+  background-position: -25px -29px;
+}
+.photo8 {
+  background-position: -50px -29px;
+}
+.photo9 {
+  background-position: -78px -29px;
+}
+.photo10 {
+  background-position: -104px -29px;
+}

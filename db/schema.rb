@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917095202) do
+ActiveRecord::Schema.define(version: 20140925080342) do
+
+  create_table "answers", force: true do |t|
+    t.integer  "question_id"
+    t.text     "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
 
   create_table "questions", force: true do |t|
     t.string   "name"
@@ -23,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140917095202) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "city"
+    t.integer  "awesome_count", default: 0
   end
 
 end

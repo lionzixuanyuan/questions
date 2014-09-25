@@ -31,10 +31,11 @@ class QuestionsController < ApplicationController
 
   # 发送验证短信
   def send_valid_sms
-    if params[:phone].present? && Service::Message.send_code_by_phone(params[:phone])
+    if params[:phone].present? && !Question.exists?(:phone => params[:phone]) && Service::Message.send_code_by_phone(params[:phone])
       result = {:state => "success"}
     else
       result = {:state => "error"}
+      result = result.merge({:msg => "每个手机号只能提交一个问题～"}) if Question.exists?(:phone => params[:phone])
     end
     render :json => result.to_json
   end
@@ -48,6 +49,39 @@ class QuestionsController < ApplicationController
     end
     
     render :json => result.to_json
+  end
+
+  # 点赞
+  def click_awesome
+    question = Question.find params[:question_id]
+    question.update_attribute("awesome_count", question.awesome_count + 1)
+    render :text => "success"
+  end
+
+  # 回答问题
+  def answer_question
+    question = Question.find params[:question_id]
+    Answer.create(:question => question, :answer => params[:answer_text])
+    render :text => "success"
+  end
+
+  # Excel 导出
+  require 'csv'
+  def export_excel
+    questions = Question.all
+
+    report = StringIO.new
+    report = CSV.generate do |title|
+       title << ['name', 'address', 'college', 'e_mail', 'phone', 'question', 'created_at', 'city', 'awesome_count']
+       questions.each do |c|
+          title << [ c.name,  c.address,  c.college,  c.e_mail,  c.phone,  c.question,  c.created_at,  c.city,  c.awesome_count ]
+       end
+       count_str = ""
+       questions.group(:city).count.each_pair{|k, v| count_str += "[#{k}]:#{v};"}
+       title << ["total num:#{questions.length}", count_str]
+    end
+
+    send_data report, :filename => "result.xls", :type =>  "application/vnd.ms-excel"
   end
 
   # GET /questions
@@ -77,16 +111,17 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    redirect_to message_questions_path if @question.save
 
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @question }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @question.save
+    #     format.html { redirect_to @question, notice: 'Question was successfully created.' }
+    #     format.json { render action: 'show', status: :created, location: @question }
+    #   else
+    #     format.html { render action: 'new', city: params[:city], layout: "form" }
+    #     format.json { render json: @question.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /questions/1
