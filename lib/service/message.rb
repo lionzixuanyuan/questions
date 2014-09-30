@@ -29,10 +29,10 @@ module Service
       return code
     end
 
-    def self.send_code_channel(content, phone)
+    def self.send_code_channel(content, phone, host="http://124.173.70.59:8081" )
       # http://114.215.202.188:8081/
       # http://124.173.70.59:8081/
-      response = Unirest.post "http://114.215.202.188:8081/SmsAndMms/mt",
+      response = Unirest.post "#{host}/SmsAndMms/mt",
         headers:{ "Accept" => "application/x-www-form/urlencoded" }, 
         parameters:{
           Sn: "SDK-YFU-0149",
@@ -43,13 +43,7 @@ module Service
 
       return_code = response.headers[:location].match(/\/(-)*\d+.xml/).to_s.match(/(-)*\d+/).to_s
 
-      puts '>>>>>>>>'
-      puts '>>>>>>>>'
-      p return_code
-      puts '>>>>>>>>'
-      puts '>>>>>>>>'
-
-      case return_code["int"]
+      case return_code
       when "0"
         true
       when "-1"
@@ -60,22 +54,26 @@ module Service
         # 发送短信余额不足
         Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：发送短信余额不足")
         false
-      when "-6"
-        # 参数有误
-        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：参数有误")
+      when "-3"
+        # 内容超过300个字
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：内容超过300个字")
+        false
+      when "-4"
+        # IP不符合
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：IP不符合")
         false
       when "-7"
-        # 权限受限
-        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：权限受限")
+        # 手机号错误
+        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：手机号错误")
         false
-      when "-8"
-        # Ip失败
-        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：Ip失败")
-        false
-      when "-11"
-        # 内部数据库错误
-        Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：内部数据库错误")
-        false
+      when "-404"
+        # 系统异常
+        if host == "http://114.215.202.188:8081"
+          Rails.logger.info("#{Time.now} ========> 短信发送接口调用失败，失败原因：系统异常")
+          false
+        else
+          send_code_channel(content, phone, "http://114.215.202.188:8081")
+        end
       end
       # true
     end
